@@ -11,6 +11,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "paths": {
+      "ngx-bottom-sheet": [
+        "./dist/ngx-bottom-sheet"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
