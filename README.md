@@ -1,4 +1,10 @@
-# Ngx-Bottom-Sheet
+<p align="center" float="left">
+     <img src="./assets/angular-icon.png" alt="angular" width="80">
+     <img src="./assets/sheetx100.png" alt="ngx-bottom-sheet" width="80">
+</p>
+
+
+# Ngx-Bottom-Sheet 
 
 Ngx-Bottom-Sheet is a highly customizable and lightweight Angular service that provides a mobile-friendly bottom sheet component. Originally designed for Progressive Web Apps (PWA) and mobile-first applications, this component can be used seamlessly in desktop environments as well.
 
@@ -21,22 +27,6 @@ npm install ngx-bottom-sheet --save
 ```
 
 ## Usage
-
-### Importing the Module
-
-Import the `NgxBottomSheetModule` into your Angular module:
-
-```typescript
-import { NgxBottomSheetModule } from 'ngx-bottom-sheet';
-
-@NgModule({
-  imports: [
-    // Other modules
-    NgxBottomSheetModule,
-  ],
-})
-export class AppModule {}
-```
 
 ### Using the Service
 
@@ -237,10 +227,10 @@ this.bottomSheetService.open(MyCustomComponent, {
 
 ### Styling the Bottom Sheet
 
-The bottom sheet is styled using CSS. You can customize the appearance by targeting the `.bottom-sheet` class in your global styles or by defining a custom theme:
+The bottom sheet is styled using CSS. You can customize the appearance by targeting the `.ngx-bottom-sheet` class in your global styles or by defining a custom theme:
 
 ```css
-.bottom-sheet {
+.ngx-bottom-sheet {
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
 }
 ```
@@ -253,7 +243,8 @@ The bottom sheet is styled using CSS. You can customize the appearance by target
 
 ## Roadmap
 
-- **Animations**: Add support for custom animations.
+- **Animation Speed**: Add support for custom animation speed.
+- **Drag to Dismiss**: Implement drag-to-dismiss functionality for closing the bottom sheet.
 - **Theming**: Extend theming capabilities to support dark mode and other themes.
 - **Accessibility**: Improve accessibility features like ARIA roles and keyboard navigation.
 
