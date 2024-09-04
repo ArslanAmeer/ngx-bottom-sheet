@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "dev": "ng serve ngx-bottom-sheet-demo",
+    "build:demo": "ng build ngx-bottom-sheet-demo",
+    "build:package": "ng build ngx-bottom-sheet",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ngx-bottom-sheet-demo": "node dist/ngx-bottom-sheet-demo/server/server.mjs"
