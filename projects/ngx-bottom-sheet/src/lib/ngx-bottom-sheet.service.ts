@@ -1,16 +1,15 @@
 import {
   ApplicationRef,
-  ComponentFactoryResolver,
   ComponentRef,
+  createComponent,
   EmbeddedViewRef,
   Injectable,
   Injector,
-  OnDestroy,
   Type,
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { NgxBottomSheetComponent } from './ngx-bottom-sheet.component';
-import { WindowRef } from './windowRef.service';
+import {Observable, Subject} from 'rxjs';
+import {NgxBottomSheetComponent} from './ngx-bottom-sheet.component';
+import {WindowRef} from './windowRef.service';
 
 interface BottomSheetConfig {
   data?: BottomSheetDataRef;
@@ -97,8 +96,8 @@ export class NgxBottomSheetService {
    */
   private _baseZIndex: number = 200;
 
+
   constructor(
-    private readonly _componentFactoryResolver: ComponentFactoryResolver,
     private readonly _appRef: ApplicationRef,
     private readonly _injector: Injector,
     private readonly _windowRef: WindowRef
@@ -123,6 +122,7 @@ export class NgxBottomSheetService {
     }
     return null;
   }
+
 
   /**
    * Cleans up the event listener when the service is destroyed.
@@ -218,7 +218,6 @@ export class NgxBottomSheetService {
       instance.afterClosedSubject.next(data);
       instance.afterClosedSubject.complete();
 
-      // Remove the instance from the array
       this._bottomSheetInstances.splice(instanceIndex, 1);
     }
   }
@@ -280,35 +279,36 @@ export class NgxBottomSheetService {
     uniqueId: string
   ): ComponentRef<NgxBottomSheetComponent> {
     const zIndex = this._baseZIndex + this._bottomSheetInstances.length * 2 + 1; // Above the backdrop
-    const bottomSheetFactory =
-      this._componentFactoryResolver.resolveComponentFactory(
-        NgxBottomSheetComponent
-      );
-    const bottomSheetRef = bottomSheetFactory.create(this._injector);
+
+    // Dynamically create the bottom sheet component using the new `createComponent` API
+    const bottomSheetRef = createComponent(NgxBottomSheetComponent, {
+      environmentInjector: this._appRef.injector
+    });
+
+    // Attach the bottom sheet component to the application
     this._appRef.attachView(bottomSheetRef.hostView);
 
-    const domElem = (bottomSheetRef.hostView as EmbeddedViewRef<any>)
-      .rootNodes[0] as HTMLElement;
+    // Append the bottom sheet element to the DOM
+    const domElem = (bottomSheetRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     this._applyStylesToDomElement(domElem, config);
     domElem.style.zIndex = `${zIndex}`; // Set the calculated z-index
     document.body.appendChild(domElem);
 
+    // Create the actual content inside the bottom sheet after it's appended to the DOM
     setTimeout(() => {
-      const componentFactory =
-        this._componentFactoryResolver.resolveComponentFactory(component);
-      const bottomSheetInstance =
-        bottomSheetRef.instance as NgxBottomSheetComponent;
-      const componentRef =
-        bottomSheetInstance.container.createComponent(componentFactory);
+      const bottomSheetInstance = bottomSheetRef.instance;
+      const componentRef = bottomSheetInstance.container.createComponent(component);
       bottomSheetInstance.showCloseButton = config.showCloseButton ?? true;
 
+      // If there is data to pass to the component, assign it
       if (config.data && 'bottomSheetData' in componentRef.instance) {
-        Object.assign(componentRef.instance, { bottomSheetData: config.data });
+        Object.assign(componentRef.instance, {bottomSheetData: config.data});
       }
     });
 
     return bottomSheetRef;
   }
+
 
   /**
    * Applies styles to the bottom sheet DOM element.
@@ -320,11 +320,11 @@ export class NgxBottomSheetService {
     config: BottomSheetConfig
   ): void {
     domElem.style.width = config.width || '100%';
-    domElem.style.height = config.height || '95%%';
+    domElem.style.height = config.height || '95%';
     domElem.style.borderTopRightRadius = config.borderRadius || '8px';
     domElem.style.borderTopLeftRadius = config.borderRadius || '8px';
     domElem.style.backgroundColor = config.backgroundColor || 'white';
-    domElem.className = 'bottom-sheet';
+    domElem.className = 'ngx-bottom-sheet';
   }
 
   /**
