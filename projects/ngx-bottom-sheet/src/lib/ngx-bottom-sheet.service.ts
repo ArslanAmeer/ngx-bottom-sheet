@@ -2,7 +2,7 @@ import {
   ApplicationRef,
   ComponentRef,
   createComponent,
-  EmbeddedViewRef,
+  EmbeddedViewRef, EnvironmentInjector, inject,
   Injectable,
   Injector,
   Type,
@@ -10,41 +10,8 @@ import {
 import {Observable, Subject} from 'rxjs';
 import {NgxBottomSheetComponent} from './ngx-bottom-sheet.component';
 import {WindowRef} from './windowRef.service';
+import {BottomSheetConfig, BottomSheetInstance} from './ngx-bottom-sheet.types';
 
-interface BottomSheetConfig {
-  data?: BottomSheetDataRef;
-  width?: 'small' | 'medium' | 'large' | 'full' | string;
-  height?: 'full' | 'top' | 'mid' | 'quarter' | string;
-  borderRadius?: string;
-  backgroundColor?: string;
-  showCloseButton?: boolean;
-  closeOnBackdropClick?: boolean;
-}
-
-/**
- * The data to be passed to the bottom sheet.
- * @property {any} [key] - The data to be passed to the bottom sheet.
- * @example
- * // Example of passing data to the bottom sheet
- * const bottomSheetRef = this._bottomSheetService.open(SampleComponenet, {
- *  height: 'quarter',
- *  showCloseButton: false,
- *  backgroundColor: 'transparent',
- *  data: {
- *  text: 'Task',
- *  showReportButton: true
- *  }
- */
-export interface BottomSheetDataRef {
-  [key: string]: any;
-}
-
-interface BottomSheetInstance {
-  ref: ComponentRef<NgxBottomSheetComponent>;
-  afterClosedSubject: Subject<any>;
-  backdropElement: HTMLElement;
-  config?: BottomSheetConfig;
-}
 
 /**
  * Represents a service class for managing bottom sheets in an application.
@@ -96,10 +63,11 @@ export class NgxBottomSheetService {
    */
   private _baseZIndex: number = 200;
 
+  private readonly _appRef = inject(ApplicationRef);
+  private readonly _envInjector = inject(EnvironmentInjector);
+
 
   constructor(
-    private readonly _appRef: ApplicationRef,
-    private readonly _injector: Injector,
     private readonly _windowRef: WindowRef
   ) {
     if (this._windowRef.nativeWindow) {
@@ -278,29 +246,24 @@ export class NgxBottomSheetService {
     config: BottomSheetConfig,
     uniqueId: string
   ): ComponentRef<NgxBottomSheetComponent> {
-    const zIndex = this._baseZIndex + this._bottomSheetInstances.length * 2 + 1; // Above the backdrop
+    const zIndex = this._baseZIndex + this._bottomSheetInstances.length * 2 + 1;
 
-    // Dynamically create the bottom sheet component using the new `createComponent` API
     const bottomSheetRef = createComponent(NgxBottomSheetComponent, {
-      environmentInjector: this._appRef.injector
+      environmentInjector: this._envInjector
     });
 
-    // Attach the bottom sheet component to the application
     this._appRef.attachView(bottomSheetRef.hostView);
 
-    // Append the bottom sheet element to the DOM
     const domElem = (bottomSheetRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     this._applyStylesToDomElement(domElem, config);
-    domElem.style.zIndex = `${zIndex}`; // Set the calculated z-index
+    domElem.style.zIndex = `${zIndex}`;
     document.body.appendChild(domElem);
 
-    // Create the actual content inside the bottom sheet after it's appended to the DOM
     setTimeout(() => {
       const bottomSheetInstance = bottomSheetRef.instance;
       const componentRef = bottomSheetInstance.container.createComponent(component);
       bottomSheetInstance.showCloseButton = config.showCloseButton ?? true;
 
-      // If there is data to pass to the component, assign it
       if (config.data && 'bottomSheetData' in componentRef.instance) {
         Object.assign(componentRef.instance, {bottomSheetData: config.data});
       }
