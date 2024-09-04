@@ -1,6 +1,5 @@
 <p align="center" float="left">
-     <img src="./assets/angular-icon.png" alt="angular" width="80">
-     <img src="./assets/sheetx100.png" alt="ngx-bottom-sheet" width="80">
+     <img src="./assets/icons/ngx-bottom-sheet.png" alt="ngx-bottom-sheet" width="150">
 </p>
 
 
