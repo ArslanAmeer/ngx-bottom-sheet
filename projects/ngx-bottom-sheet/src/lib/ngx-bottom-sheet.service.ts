@@ -2,9 +2,10 @@ import {
   ApplicationRef,
   ComponentRef,
   createComponent,
-  EmbeddedViewRef, EnvironmentInjector, inject,
+  EmbeddedViewRef,
+  EnvironmentInjector,
+  inject,
   Injectable,
-  Injector,
   Type,
 } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
@@ -28,6 +29,9 @@ import {BottomSheetConfig, BottomSheetInstance} from './ngx-bottom-sheet.types';
  * Closes the topmost bottom sheet.
  * @param {any} [data] - Optional data to pass to the afterClosed$ observable when the bottom sheet is closed.
  *
+ * @method closeAll
+ * Closes all open bottom sheets.
+ *
  * @property {() => any} currentSheetData
  * A getter method that returns the data of the current (topmost) bottom sheet.
  * Returns `null` if there are no open bottom sheets.
@@ -46,6 +50,9 @@ import {BottomSheetConfig, BottomSheetInstance} from './ngx-bottom-sheet.types';
  * const currentData = this.bottomSheetService.currentSheetData;
  * console.log('Current bottom sheet data:', currentData);
  * ```
+ *
+ * @author Arslan Ameer
+ * @see {@link https://arslanameer.com}
  */
 @Injectable({
   providedIn: 'root',
@@ -81,7 +88,17 @@ export class NgxBottomSheetService {
   /**
    * Returns the data of the current sheet.
    * @returns {any} The data of the current sheet.
-   */
+   * Returns `null` if there are no open bottom sheets.
+   * @description This is a getter method that returns the data of the current (topmost) bottom sheet.
+   * @example
+   * ```typescript
+   * const currentData = this.bottomSheetService.currentSheetData;
+   * console.log('Current bottom sheet data:', currentData);
+   * ```
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
+   **/
   public get currentSheetData(): any {
     if (this._bottomSheetInstances.length > 0) {
       const topSheetIndex = this._bottomSheetInstances.length - 1;
@@ -94,6 +111,9 @@ export class NgxBottomSheetService {
 
   /**
    * Cleans up the event listener when the service is destroyed.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   ngOnDestroy(): void {
     if (this._windowRef.nativeWindow) {
@@ -117,6 +137,21 @@ export class NgxBottomSheetService {
    * - `showCloseButton` - Whether to show the close button in the bottom sheet.
    * - `closeOnBackdropClick` - Whether the bottom sheet should close when the backdrop is clicked.
    * @returns {Object} An object containing the observable for when the bottom sheet is closed.
+   *
+   * @example
+   * ```typescript
+   *  const bottomSheetRef = this.bottomSheetService.open(MyComponent, {
+   *  height: 'full',
+   *  showCloseButton: true,
+   *  backgroundColor: 'transparent',
+   *  data: {
+   *   text: 'Task',
+   *  }
+   *  });
+   * ```
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   public open(
     component: Type<any>,
@@ -149,6 +184,15 @@ export class NgxBottomSheetService {
   /**
    * Closes the topmost bottom sheet.
    * @param {any} [data] - The data to be passed to the afterClosed$ observable.
+   * @description This method closes the topmost bottom sheet. If there are multiple bottom sheets open, only the topmost one will be closed.
+   *
+   * @example
+   * ```typescript
+   * this.bottomSheetService.close();
+   * ```
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   public close(data?: any): void {
     if (this._bottomSheetInstances.length > 0) {
@@ -170,6 +214,14 @@ export class NgxBottomSheetService {
   /**
    * Closes all bottom sheets.
    * @param data - Optional The data to be passed to the afterClosed$ observable.
+   * @description This method closes all open bottom sheets.
+   * @example
+   * ```typescript
+   * this.bottomSheetService.closeAll();
+   * ```
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   public closeAll(data?: any): void {
     // Iterate backwards through the instances to close them in the correct order
@@ -198,6 +250,9 @@ export class NgxBottomSheetService {
    * Prepares the configuration for the bottom sheet.
    * @param {BottomSheetConfig} [config] - The configuration for the bottom sheet.
    * @returns {BottomSheetConfig} The prepared configuration.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _prepareConfig(config?: BottomSheetConfig): BottomSheetConfig {
     return {
@@ -214,6 +269,9 @@ export class NgxBottomSheetService {
    * Creates a backdrop for the bottom sheet.
    * @param  [closeOnBackdropClick=true] - Whether the bottom sheet should close when the backdrop is clicked.
    * @returns {HTMLElement} The created backdrop element.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _createBackdrop(closeOnBackdropClick = true): HTMLElement {
     const zIndex = this._baseZIndex + this._bottomSheetInstances.length * 2; // Ensure different z-index for each instance
@@ -240,6 +298,9 @@ export class NgxBottomSheetService {
    * @param {BottomSheetConfig} config - The configuration for the bottom sheet.
    * @param {string} uniqueId - The unique ID for the bottom sheet.
    * @returns {ComponentRef<NgxBottomSheetComponent>} The reference to the created bottom sheet.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _createBottomSheet(
     component: Type<any>,
@@ -259,10 +320,15 @@ export class NgxBottomSheetService {
     domElem.style.zIndex = `${zIndex}`;
     document.body.appendChild(domElem);
 
+
     setTimeout(() => {
       const bottomSheetInstance = bottomSheetRef.instance;
       const componentRef = bottomSheetInstance.container.createComponent(component);
       bottomSheetInstance.showCloseButton = config.showCloseButton ?? true;
+
+      bottomSheetInstance.showCloseButton = config.showCloseButton ?? true;
+
+      bottomSheetInstance.closeFn = this.close.bind(this);
 
       if (config.data && 'bottomSheetData' in componentRef.instance) {
         Object.assign(componentRef.instance, {bottomSheetData: config.data});
@@ -277,6 +343,9 @@ export class NgxBottomSheetService {
    * Applies styles to the bottom sheet DOM element.
    * @param {HTMLElement} domElem - The DOM element of the bottom sheet.
    * @param {BottomSheetConfig} config - The configuration for the bottom sheet.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _applyStylesToDomElement(
     domElem: HTMLElement,
@@ -303,6 +372,9 @@ export class NgxBottomSheetService {
   /**
    * Removes a backdrop element.
    * @param {HTMLElement} backdropElement - The backdrop element to be removed.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _removeBackdrop(backdropElement: HTMLElement): void {
     if (backdropElement && backdropElement.parentNode) {
@@ -322,6 +394,9 @@ export class NgxBottomSheetService {
    * Gets the width style for the bottom sheet.
    * @param {'small' | 'medium' | 'large' | 'full' | string} width - The width of the bottom sheet.
    * @returns {string} The width style.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _getWidthStyle(
     width?: 'small' | 'medium' | 'large' | 'full' | string
@@ -349,6 +424,9 @@ export class NgxBottomSheetService {
    * Gets the height style for the bottom sheet.
    * @param {'full' | 'top' | 'mid' | 'quarter' | string} height - The height of the bottom sheet.
    * @returns {string} The height style.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _getHeightStyle(
     height: 'full' | 'top' | 'mid' | 'quarter' | string
@@ -369,6 +447,9 @@ export class NgxBottomSheetService {
 
   /**
    * Updates the size of the bottom sheet.
+   *
+   * @author Arslan Ameer
+   * @see {@link https://arslanameer.com}
    */
   private _updateBottomSheetSize(): void {
     this._bottomSheetInstances.forEach((instance) => {

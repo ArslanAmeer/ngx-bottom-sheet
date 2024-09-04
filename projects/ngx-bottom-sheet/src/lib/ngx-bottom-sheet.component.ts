@@ -34,9 +34,11 @@ export class NgxBottomSheetComponent {
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
   showCloseButton = true; // Default value
-  constructor(private readonly _bottomSheetService: NgxBottomSheetService) {}
+  closeFn: (() => void) | null = null;
 
   closeBottomSheet(): void {
-    this._bottomSheetService.close();
+    if (this.closeFn) {
+      this.closeFn();
+    }
   }
 }
