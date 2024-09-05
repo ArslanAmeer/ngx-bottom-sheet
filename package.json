@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "dev": "ng serve ngx-bottom-sheet-demo",
-    "build:demo": "ng build ngx-bottom-sheet-demo",
-    "build:package": "ng build ngx-bottom-sheet",
+    "build:demo": "ng build ngx-bottom-sheet-demo --configuration produ",
+    "build:package": "ng build ngx-bottom-sheet --configuration production && node scripts/post-build.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ngx-bottom-sheet-demo": "node dist/ngx-bottom-sheet-demo/server/server.mjs"
