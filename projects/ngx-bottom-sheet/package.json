@@ -1,6 +1,30 @@
 {
   "name": "ngx-bottom-sheet",
   "version": "1.0.0",
+  "description": "A highly customizable Angular bottom sheet component for smooth UI interactions.",
+  "author": "Arslan Ameer <hello@arslanameer.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArslanAmeer/ngx-bottom-sheet"
+  },
+  "bugs": {
+    "url": "https://github.com/ArslanAmeer/ngx-bottom-sheet/issues"
+  },
+  "homepage": "https://github.com/ArslanAmeer/ngx-bottom-sheet#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "angular",
+    "bottom-sheet",
+    "ngx",
+    "ngx-bottom-sheet",
+    "component",
+    "UI",
+    "angular-component",
+    "arslan-ameer"
+  ],
   "peerDependencies": {
     "@angular/common": ">=16.0.0",
     "@angular/core": ">=16.0.0"
