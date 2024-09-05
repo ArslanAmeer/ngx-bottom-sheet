@@ -17,11 +17,13 @@ main {
   width: 100%;
   min-height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   box-sizing: inherit;
   position: relative;
+  text-align: center;
 }
 
 .angular-logo {
@@ -30,10 +32,33 @@ main {
 
 .content {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
   max-width: 700px;
   margin-bottom: 3rem;
+  gap: 10px;
+}
+
+.demo-section {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  pre, code {
+    text-align: left !important;
+  }
 }
 
 .content h1 {
@@ -85,9 +110,11 @@ main {
 .pill-group .pill:nth-child(6n + 1) {
   --pill-accent: var(--bright-blue);
 }
+
 .pill-group .pill:nth-child(6n + 2) {
   --pill-accent: var(--french-violet);
 }
+
 .pill-group .pill:nth-child(6n + 3),
 .pill-group .pill:nth-child(6n + 4),
 .pill-group .pill:nth-child(6n + 5) {

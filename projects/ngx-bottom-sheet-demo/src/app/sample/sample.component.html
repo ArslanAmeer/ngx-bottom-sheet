@@ -1,10 +1,24 @@
 <div class="sample-wrapper">
   <p>
-    Pass any component (preferably standalone) to render it inside this bottom
-    sheet.
+    The bottom sheet is a versatile UI component that allows you to render any content within a temporary panel anchored to the bottom of the screen. It can be used for various purposes such as displaying actions, collecting user input, or showing additional information.
   </p>
   <p>
-    Your compoenent which you are going to render inside this bottom
-    sheet should contain its own styles like padding margin overflow scroll etc
+    You can pass any standalone component to render inside this bottom sheet. The component you provide should manage its own styles such as padding, margin, and layout, as the bottom sheet is designed to be flexible and generic.
   </p>
+  <p>
+    For advanced usage, you can customize the header or disable the close button. This allows for creating a custom header with personalized actions, like using a custom close button to dismiss the bottom sheet.
+  </p>
+
+  <ng-container *ngIf="closeFromInside">
+    <button (click)="closeDialog('Closed from inside')">Close Bottom Sheet</button>
+  </ng-container>
+
+  <ng-container *ngIf="showPassedData">
+    <hr />
+    <h3>Passed Data</h3>
+    <h5>{{ showPassedData }}</h5>
+    <p>
+      This data has been passed from the parent component into the bottom sheet, demonstrating how you can seamlessly transfer information across components.
+    </p>
+  </ng-container>
 </div>
