@@ -17,6 +17,10 @@ Ngx-Bottom-Sheet is a highly customizable and lightweight Angular service that p
 - **Smooth Animations**: Slide-up animation for an engaging user experience.
 - **Multiple Sheets Management**: Supports multiple bottom sheets stacked on top of each other, with automatic tracking of the currently open sheet. Close the topmost sheet or close all sheets with ease.
 
+## DEMO
+
+Visit the [Demo Page](https://arslanameer.com/ngx-bottom-sheet/) to see the bottom sheet in action.
+
 ## Installation
 
 Install the package via npm:
