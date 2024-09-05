@@ -1,5 +1,5 @@
 <p align="center" float="left">
-     <img src="./assets/icons/ngx-bottom-sheet.png" alt="ngx-bottom-sheet" width="150">
+     <img src="./ngx-bottom-sheet.png" alt="ngx-bottom-sheet" width="150">
 </p>
 
 
