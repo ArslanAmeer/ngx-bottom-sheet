@@ -32,6 +32,15 @@ Ngx-Bottom-Sheet
 
 Visit the [Demo Page](https://ngx-bottom-sheet.arslanameer.com/) to see the bottom sheet in action.
 
+## Supported Angular Versions
+
+| Angular Version | ngx-bottom-sheet Version | Support Status  |
+|-----------------|--------------------------|-----------------|
+| 16.x            | 1.0.0                    | Supported       |
+| 17.x            | 1.0.0                    | Supported       |
+| 18.x            | 1.0.0                    | Supported       |
+
+
 ## Installation
 
 Install the package via npm:
