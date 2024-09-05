@@ -1,11 +1,22 @@
 <p align="center" float="left">
      <img src="./ngx-bottom-sheet.png" alt="ngx-bottom-sheet" width="150">
 </p>
+<h1 align="center">
+Ngx-Bottom-Sheet
+</h1>
+
+---
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b316ae78-3727-427d-b6f0-f51e0715123f/deploy-status)](https://ngx-bottom-sheet.arslanameer.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)]()
+[![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]()
+
+[//]: # ([![All Contributors]&#40;https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square&#41;]&#40;#contributors-&#41;)
+[//]: # ([![npm version]&#40;https://badge.fury.io/js/ngx-bottom-sheet.svg&#41;]&#40;https://badge.fury.io/js/ngx-bottom-sheet&#41;)
 
 
-# Ngx-Bottom-Sheet 
-
-Ngx-Bottom-Sheet is a highly customizable and lightweight Angular service that provides a mobile-friendly bottom sheet component. Originally designed for Progressive Web Apps (PWA) and mobile-first applications, this component can be used seamlessly in desktop environments as well.
+> Ngx-Bottom-Sheet is a highly customizable and lightweight Angular service that provides a mobile-friendly bottom sheet component. Originally designed for Progressive Web Apps (PWA) and mobile-first applications, this component can be used seamlessly in desktop environments as well.
 
 ## Features
 
@@ -19,14 +30,14 @@ Ngx-Bottom-Sheet is a highly customizable and lightweight Angular service that p
 
 ## DEMO
 
-Visit the [Demo Page](https://arslanameer.com/ngx-bottom-sheet/) to see the bottom sheet in action.
+Visit the [Demo Page](https://ngx-bottom-sheet.arslanameer.com/) to see the bottom sheet in action.
 
 ## Installation
 
 Install the package via npm:
 
 ```bash
-npm install ngx-bottom-sheet --save
+npm install ngx-bottom-sheet
 ```
 
 ## Usage
@@ -249,28 +260,26 @@ The bottom sheet is styled using CSS. You can customize the appearance by target
 - **Animation Speed**: Add support for custom animation speed.
 - **Drag to Dismiss**: Implement drag-to-dismiss functionality for closing the bottom sheet.
 - **Theming**: Extend theming capabilities to support dark mode and other themes.
-- **Accessibility**: Improve accessibility features like ARIA roles and keyboard navigation.
-
-## Contributing
-
-Contributions are welcome! If you have suggestions or bug reports, please open an issue or submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). You are free to use, modify, and distribute this package, provided that you include the copyright notice and the license text. For more information, please see the [LICENSE](./LICENSE) file.
 
 ## Author
 
-- **[Arslan Ameer](https://arslanameer.com)**
+`ngx-bottom-sheet` is developed and maintained by [Arslan Ameer](https://github.com/arslanameer). If you have any questions or need help, feel free to open an issue on the [GitHub repository](https://github.com/ArslanAmeer/ngx-bottom-sheet/issues).
 
- *Initial work* - [Arslan Ameer](https://github.com/ArslanAmeer)
+## Contributing
 
----
+Contributions to Ngx-bottom-sheet are welcome and greatly appreciated! If you would like to contribute, please follow these steps:
 
-### Icon Attribution
+1. Fork the repository on GitHub.
+2. Clone your fork and create a new branch for your changes.
+3. Commit and push your changes to your fork.
+4. Create a Pull Request on the original repository, describing your changes and referencing any related issues.
 
-Icon used in the header is provided by [Icons8](https://icons8.com).
+Please make sure to follow the existing coding style and add tests for any new features or bug fixes. Your contributions will be reviewed and, if approved, merged into the main repository.
+
+Thank you for your interest in contributing to NGX-BOTTOM-SHEET!
 
 ---
