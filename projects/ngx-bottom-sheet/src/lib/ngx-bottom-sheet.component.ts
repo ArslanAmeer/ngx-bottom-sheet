@@ -1,6 +1,5 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgxBottomSheetService } from './ngx-bottom-sheet.service';
+import {Component, ViewChild, ViewContainerRef} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'ngx-bottom-sheet',
@@ -31,7 +30,7 @@ import { NgxBottomSheetService } from './ngx-bottom-sheet.service';
   styleUrls: ['./ngx-bottom-sheet.component.scss'],
 })
 export class NgxBottomSheetComponent {
-  @ViewChild('container', { read: ViewContainerRef })
+  @ViewChild('container', {read: ViewContainerRef})
   container!: ViewContainerRef;
   showCloseButton = true; // Default value
   closeFn: (() => void) | null = null;
