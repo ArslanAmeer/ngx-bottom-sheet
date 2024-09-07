@@ -1,6 +1,6 @@
 {
   "name": "ngx-bottom-sheet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A highly customizable Angular bottom sheet component for smooth UI interactions.",
   "author": "Arslan Ameer <hello@arslanameer.com>",
   "license": "MIT",

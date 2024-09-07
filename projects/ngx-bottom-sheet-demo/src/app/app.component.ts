@@ -56,4 +56,14 @@ export class AppComponent {
       },
     })
   }
+
+  openBottomSheetAndToOpenOther() {
+    this._bottomSheetService.open(SampleComponent, {
+      height: '50%',
+      closeOnBackdropClick: false,
+      data: {
+        stackSheet: true
+      },
+    });
+  }
 }
