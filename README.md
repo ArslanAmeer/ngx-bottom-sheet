@@ -5,18 +5,18 @@
 Ngx-Bottom-Sheet
 </h1>
 
----
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b316ae78-3727-427d-b6f0-f51e0715123f/deploy-status)](https://ngx-bottom-sheet.arslanameer.com/)
+[![npm version](https://badge.fury.io/js/ngx-bottom-sheet.svg)](https://badge.fury.io/js/ngx-bottom-sheet)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![commitizen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)]()
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]()
 
-[//]: # ([![All Contributors]&#40;https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square&#41;]&#40;#contributors-&#41;)
-[//]: # ([![npm version]&#40;https://badge.fury.io/js/ngx-bottom-sheet.svg&#41;]&#40;https://badge.fury.io/js/ngx-bottom-sheet&#41;)
-
 
 > Ngx-Bottom-Sheet is a highly customizable and lightweight Angular service that provides a mobile-friendly bottom sheet component. Originally designed for Progressive Web Apps (PWA) and mobile-first applications, this component can be used seamlessly in desktop environments as well.
+
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/arslanameer)
+
 
 ## Features
 
@@ -288,6 +288,9 @@ Contributions to Ngx-bottom-sheet are welcome and greatly appreciated! If you wo
 4. Create a Pull Request on the original repository, describing your changes and referencing any related issues.
 
 Please make sure to follow the existing coding style and add tests for any new features or bug fixes. Your contributions will be reviewed and, if approved, merged into the main repository.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/arslanameer)
+
 
 Thank you for your interest in contributing to NGX-BOTTOM-SHEET!
 
