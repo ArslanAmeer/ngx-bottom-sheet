@@ -260,7 +260,7 @@ export class NgxBottomSheetService {
       width: this._getWidthStyle(config?.width),
       height: this._getHeightStyle(config?.height || '95%'),
       borderRadius: config?.borderRadius || '16px',
-      backgroundColor: config?.backgroundColor || 'white',
+      backgroundColor: config?.backgroundColor,
       showCloseButton: config?.showCloseButton ?? true,
     };
   }
@@ -355,7 +355,7 @@ export class NgxBottomSheetService {
     domElem.style.height = config.height || '95%';
     domElem.style.borderTopRightRadius = config.borderRadius || '8px';
     domElem.style.borderTopLeftRadius = config.borderRadius || '8px';
-    domElem.style.backgroundColor = config.backgroundColor || 'white';
+    if (config.backgroundColor) domElem.style.backgroundColor = config.backgroundColor;
     domElem.className = 'ngx-bottom-sheet';
   }
 
