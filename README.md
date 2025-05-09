@@ -253,6 +253,9 @@ this.bottomSheetService.open(MyCustomComponent, {
 
 The bottom sheet is styled using CSS. You can customize the appearance by targeting the `.ngx-bottom-sheet` class in your global styles or by defining a custom theme:
 
+> NOTE: by default there is no background to the ngx-bottom-sheet.
+> If you want to add a background color, you can do so by adding the 'ngx-bottom-sheet' class to your global styles.
+
 ```css
 .ngx-bottom-sheet {
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
