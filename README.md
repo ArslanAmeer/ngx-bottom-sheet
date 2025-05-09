@@ -36,9 +36,10 @@ Visit the [Demo Page](https://ngx-bottom-sheet.arslanameer.com/) to see the bott
 
 | Angular Version | ngx-bottom-sheet Version | Support Status  |
 |-----------------|--------------------------|-----------------|
-| 16.x            | 1.0.0                    | Supported       |
-| 17.x            | 1.0.0                    | Supported       |
-| 18.x            | 1.0.0                    | Supported       |
+| 16.x            | 1.0.2                    | Supported       |
+| 17.x            | 1.0.2                    | Supported       |
+| 18.x            | 1.0.2                    | Supported       |
+| 19.x            | 1.0.2                    | Supported       |
 
 
 ## Installation
